@@ -1,0 +1,199 @@
+rohan@pop-os:~$ git status
+fatal: Not a git repository (or any of the parent directories): .git
+rohan@pop-os:~$ git
+usage: git [--version] [--help] [-C <path>] [-c name=value]
+           [--exec-path[=<path>]] [--html-path] [--man-path] [--info-path]
+           [-p | --paginate | --no-pager] [--no-replace-objects] [--bare]
+           [--git-dir=<path>] [--work-tree=<path>] [--namespace=<name>]
+           <command> [<args>]
+
+These are common Git commands used in various situations:
+
+start a working area (see also: git help tutorial)
+   clone      Clone a repository into a new directory
+   init       Create an empty Git repository or reinitialize an existing one
+
+work on the current change (see also: git help everyday)
+   add        Add file contents to the index
+   mv         Move or rename a file, a directory, or a symlink
+   reset      Reset current HEAD to the specified state
+   rm         Remove files from the working tree and from the index
+
+examine the history and state (see also: git help revisions)
+   bisect     Use binary search to find the commit that introduced a bug
+   grep       Print lines matching a pattern
+   log        Show commit logs
+   show       Show various types of objects
+   status     Show the working tree status
+
+grow, mark and tweak your common history
+   branch     List, create, or delete branches
+   checkout   Switch branches or restore working tree files
+   commit     Record changes to the repository
+   diff       Show changes between commits, commit and working tree, etc
+   merge      Join two or more development histories together
+   rebase     Reapply commits on top of another base tip
+   tag        Create, list, delete or verify a tag object signed with GPG
+
+collaborate (see also: git help workflows)
+   fetch      Download objects and refs from another repository
+   pull       Fetch from and integrate with another repository or a local branch
+   push       Update remote refs along with associated objects
+
+'git help -a' and 'git help -g' list available subcommands and some
+concept guides. See 'git help <command>' or 'git help <concept>'
+to read about a specific subcommand or concept.
+rohan@pop-os:~$ mkdir dirk
+rohan@pop-os:~$ cd dirk
+rohan@pop-os:~/dirk$ git init
+Initialized empty Git repository in /home/rohan/dirk/.git/
+rohan@pop-os:~/dirk$ nano pref.txt
+rohan@pop-os:~/dirk$ ls
+pref.txt
+rohan@pop-os:~/dirk$ git status
+On branch master
+
+No commits yet
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+
+	pref.txt
+
+nothing added to commit but untracked files present (use "git add" to track)
+rohan@pop-os:~/dirk$ git add pref.txt
+rohan@pop-os:~/dirk$ git status
+On branch master
+
+No commits yet
+
+Changes to be committed:
+  (use "git rm --cached <file>..." to unstage)
+
+	new file:   pref.txt
+
+rohan@pop-os:~/dirk$ nano freak.txt
+rohan@pop-os:~/dirk$ git status
+On branch master
+
+No commits yet
+
+Changes to be committed:
+  (use "git rm --cached <file>..." to unstage)
+
+	new file:   pref.txt
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+
+	freak.txt
+
+rohan@pop-os:~/dirk$ git add .
+rohan@pop-os:~/dirk$ git status
+On branch master
+
+No commits yet
+
+Changes to be committed:
+  (use "git rm --cached <file>..." to unstage)
+
+	new file:   freak.txt
+	new file:   pref.txt
+
+rohan@pop-os:~/dirk$ ping www.google.com
+ping: www.google.com: Name or service not known
+rohan@pop-os:~/dirk$ git commit -m 'initial_commit'
+[master (root-commit) 166f40b] initial_commit
+ 2 files changed, 8 insertions(+)
+ create mode 100644 freak.txt
+ create mode 100644 pref.txt
+rohan@pop-os:~/dirk$ git -config --global user
+Unknown option: -config
+usage: git [--version] [--help] [-C <path>] [-c name=value]
+           [--exec-path[=<path>]] [--html-path] [--man-path] [--info-path]
+           [-p | --paginate | --no-pager] [--no-replace-objects] [--bare]
+           [--git-dir=<path>] [--work-tree=<path>] [--namespace=<name>]
+           <command> [<args>]
+rohan@pop-os:~/dirk$ git -config --global user.email
+Unknown option: -config
+usage: git [--version] [--help] [-C <path>] [-c name=value]
+           [--exec-path[=<path>]] [--html-path] [--man-path] [--info-path]
+           [-p | --paginate | --no-pager] [--no-replace-objects] [--bare]
+           [--git-dir=<path>] [--work-tree=<path>] [--namespace=<name>]
+           <command> [<args>]
+rohan@pop-os:~/dirk$ git config --global user.email
+rohan.thomas.9292@gmail.com
+rohan@pop-os:~/dirk$ git commit -m 'initial_commit'
+On branch master
+nothing to commit, working tree clean
+rohan@pop-os:~/dirk$ git log
+commit 166f40bc1f6648dffdca14fca1b359db88e00073 (HEAD -> master)
+Author: Rohanfree <rohan.thomas.9292@gmail.com>
+Date:   Wed Feb 28 14:26:09 2018 +0530
+
+    initial_commit
+rohan@pop-os:~/dirk$ nano freak.txt
+rohan@pop-os:~/dirk$ git commit -m 'initial_commit1'
+On branch master
+Changes not staged for commit:
+	modified:   freak.txt
+
+no changes added to commit
+rohan@pop-os:~/dirk$ log
+No command 'log' found, but there are 17 similar ones
+log: command not found
+rohan@pop-os:~/dirk$ git log
+commit 166f40bc1f6648dffdca14fca1b359db88e00073 (HEAD -> master)
+Author: Rohanfree <rohan.thomas.9292@gmail.com>
+Date:   Wed Feb 28 14:26:09 2018 +0530
+
+    initial_commit
+rohan@pop-os:~/dirk$ git status
+On branch master
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git checkout -- <file>..." to discard changes in working directory)
+
+	modified:   freak.txt
+
+no changes added to commit (use "git add" and/or "git commit -a")
+rohan@pop-os:~/dirk$ git add .
+rohan@pop-os:~/dirk$ git status
+On branch master
+Changes to be committed:
+  (use "git reset HEAD <file>..." to unstage)
+
+	modified:   freak.txt
+
+rohan@pop-os:~/dirk$ git commit -m 'initial_commit1'
+[master bf278a0] initial_commit1
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+rohan@pop-os:~/dirk$ git log
+commit bf278a0077efff359092acf3536596f67526c720 (HEAD -> master)
+Author: Rohanfree <rohan.thomas.9292@gmail.com>
+Date:   Wed Feb 28 14:39:54 2018 +0530
+
+    initial_commit1
+
+commit 166f40bc1f6648dffdca14fca1b359db88e00073
+Author: Rohanfree <rohan.thomas.9292@gmail.com>
+Date:   Wed Feb 28 14:26:09 2018 +0530
+
+    initial_commit
+rohan@pop-os:~/dirk$ git branch
+* master
+rohan@pop-os:~/dirk$ git branch 'testing'
+rohan@pop-os:~/dirk$ git branch
+* master
+  testing
+rohan@pop-os:~/dirk$ git chekout testing
+git: 'chekout' is not a git command. See 'git --help'.
+
+The most similar command is
+	checkout
+rohan@pop-os:~/dirk$ git checkout testing
+Switched to branch 'testing'
+rohan@pop-os:~/dirk$ git branch
+  master
+* testing
+
